@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -37,7 +38,7 @@ public class DuckPage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(searchBox));
         driver.findElement(searchBox).sendKeys(text);
-        driver.findElement(searchButton).click();
+//        driver.findElement(searchButton).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(linksList));
 
         List<WebElement> links = driver.findElements(linksList);
@@ -50,8 +51,8 @@ public class DuckPage {
     public String getLinkTitle() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(searchBox));
-        driver.findElement(searchBox).sendKeys("testng");
-        driver.findElement(searchButton).click();
+        driver.findElement(searchBox).sendKeys("testng"+ Keys.ENTER);
+//        driver.findElement(searchButton).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(linksList));
         List<WebElement> links = driver.findElements(linksList);
         WebElement fourthElement = links.get(3);

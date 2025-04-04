@@ -1,6 +1,7 @@
 package duck;
 
 import base.BaseTests;
+import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -33,13 +34,13 @@ public class DuckTests extends BaseTests {
 
     @Test
     public void testSearchResultsLinkText(){
-        Assert.assertEquals(duckPage.getLinkText("Selenium Webdriver",0),"https://www.selenium.dev/documentation/webdriver/");
+        Assert.assertEquals(duckPage.getLinkText("Selenium Webdriver"+ Keys.ENTER,0),"https://www.selenium.dev/documentation/webdriver/");
     }
 
 
     @Test
     public void testSearchResultsLinkText5(){
-        Assert.assertTrue(duckPage.getLinkText("Cucumber IO",1).contains("https://www.linkedin.com"));
+        Assert.assertTrue(duckPage.getLinkText("Cucumber IO"+ Keys.ENTER,1).contains("https://www.linkedin.com"));
     }
 
 
