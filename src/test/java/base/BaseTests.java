@@ -21,6 +21,7 @@ public class BaseTests {
             driver = new ChromeDriver();
         }
         driver.manage().window().maximize();
+
     }
 
     @AfterClass

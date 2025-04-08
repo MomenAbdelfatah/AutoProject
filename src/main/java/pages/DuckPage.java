@@ -1,5 +1,6 @@
 package pages;
 
+import engine.Bot;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +14,8 @@ import java.util.List;
 public class DuckPage {
 
     private WebDriver driver;
+    Bot bot;
+
     By logo = By.xpath("//section[@class='header_headerLeft__rW6nD header_headerSection___XMRI']//a[@title='Learn about DuckDuckGo']");
     By linksList = By.xpath("//li[@data-layout='organic']");
     By searchBox = By.xpath("//input[@aria-label='Search with DuckDuckGo']");
@@ -22,41 +25,33 @@ public class DuckPage {
 
     public DuckPage(WebDriver driver) {
         this.driver = driver;
+        bot = new Bot(driver);
     }
 
     public String getTitle() {
         return driver.getTitle();
     }
 
-    public WebElement getPageLogo() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(logo));
-        return driver.findElement(logo);
+    public Boolean getPageLogo() {
+        return bot.isDisplayed(logo);
     }
 
-    public String getLinkText(String text,int Index) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(searchBox));
-        driver.findElement(searchBox).sendKeys(text);
-//        driver.findElement(searchButton).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(linksList));
-
+    public String getLinkText(String text, int Index) {
+        bot.sendKeys(searchBox, text);
+        bot.findList(linksList);
         List<WebElement> links = driver.findElements(linksList);
-        WebElement firstElement = links.get(Index);
-        return firstElement.findElement(linkResultText).getDomAttribute("href");
+
+        return links.get(Index).findElement(linkResultText).getDomAttribute("href");
 
     }
 
 
     public String getLinkTitle() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(searchBox));
-        driver.findElement(searchBox).sendKeys("testng"+ Keys.ENTER);
-//        driver.findElement(searchButton).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(linksList));
+        bot.sendKeys(resultTitle, "testng" + Keys.ENTER);
+        bot.findList(linksList);
         List<WebElement> links = driver.findElements(linksList);
-        WebElement fourthElement = links.get(3);
-        return fourthElement.findElement(resultTitle).getText();
+
+        return links.get(3).findElement(resultTitle).getText();
 
     }
 

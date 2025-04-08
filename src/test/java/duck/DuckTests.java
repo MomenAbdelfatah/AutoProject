@@ -1,6 +1,7 @@
 package duck;
 
 import base.BaseTests;
+import engine.Bot;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -18,29 +19,25 @@ public class DuckTests extends BaseTests {
     }
 
     @Test
-    public void testPageTitle(){
-        String title =  duckPage.getTitle();
+    public void testPageTitle() {
+        Assert.assertEquals(duckPage.getTitle(), "Google");
+    }
 
-        Assert.assertEquals(title,"Google");
-
+    @Test
+    public void testPageLogoVisibility() {
+        Assert.assertTrue(duckPage.getPageLogo());
 
     }
 
     @Test
-    public void testPageLogoVisibility(){
-        Assert.assertTrue(duckPage.getPageLogo().isDisplayed());
-
-    }
-
-    @Test
-    public void testSearchResultsLinkText(){
-        Assert.assertEquals(duckPage.getLinkText("Selenium Webdriver"+ Keys.ENTER,0),"https://www.selenium.dev/documentation/webdriver/");
+    public void testSearchResultsLinkText() {
+        Assert.assertEquals(duckPage.getLinkText("Selenium Webdriver" + Keys.ENTER, 0), "https://www.selenium.dev/documentation/webdriver/");
     }
 
 
     @Test
-    public void testSearchResultsLinkText5(){
-        Assert.assertTrue(duckPage.getLinkText("Cucumber IO"+ Keys.ENTER,1).contains("https://www.linkedin.com"));
+    public void testSearchResultsLinkText5() {
+        Assert.assertTrue(duckPage.getLinkText("Cucumber IO" + Keys.ENTER, 1).contains("https://www.linkedin.com"));
     }
 
 
