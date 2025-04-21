@@ -11,7 +11,7 @@ public class CheckBoxTests extends BaseTests {
 
     @BeforeMethod
     public void pageSetup() {
-        bot.NavigateTo("https://the-internet.herokuapp.com/checkboxes");
+        bot.NavigateTo(data.getString("checkBoxUrl"));
         checkBoxPage = new CheckBoxPage(bot);
     }
 

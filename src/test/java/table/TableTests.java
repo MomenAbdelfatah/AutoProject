@@ -11,7 +11,7 @@ public class TableTests extends BaseTests {
 
     @BeforeMethod
     public void pageSetup() {
-        bot.NavigateTo("https://www.w3schools.com/html/html_tables.asp");
+        bot.NavigateTo(data.getString("tableTestUrl"));
         tablePage = new TablePage(bot);
     }
 

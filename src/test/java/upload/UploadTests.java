@@ -12,13 +12,13 @@ public class UploadTests extends BaseTests {
 
     @BeforeMethod
     public void pageSetup(){
-        bot.NavigateTo("https://the-internet.herokuapp.com/upload");
+        bot.NavigateTo(data.getString("uploadImageUrl"));
         uploadPage = new UploadPage(bot);
     }
 
 
     @Test
     public void testUploadImage() {
-        Assert.assertEquals(uploadPage.uploadImage(), "File Uploaded!");
+        Assert.assertEquals(uploadPage.uploadImage(data.getString("imagePath")), "File Uploaded!");
     }
 }

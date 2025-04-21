@@ -1,0 +1,10 @@
+{
+  "duckUrl": "https://www.duckduckgo.com",
+  "checkBoxUrl": "https://the-internet.herokuapp.com/checkboxes",
+  "tableTestUrl": "https://www.w3schools.com/html/html_tables.asp",
+  "searchInputT3": "Selenium Webdriver",
+  "searchInputT4": "Testng",
+  "searchInputT5": "Cucumber IO",
+  "uploadImageUrl": "https://the-internet.herokuapp.com/upload",
+  "imagePath": "C:\\Users\\momen\\OneDrive\\Pictures\\friends.jpg"
+}

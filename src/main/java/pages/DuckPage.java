@@ -42,8 +42,8 @@ public class DuckPage {
     }
 
 
-    public String getLinkTitle() {
-        bot.sendKeys(resultTitle, "testng" + Keys.ENTER);
+    public String getLinkTitle(String text) {
+        bot.sendKeys(resultTitle, text);
         List<WebElement> links = bot.findList(resultTitle);
         return links.get(3).getText();
 

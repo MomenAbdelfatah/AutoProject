@@ -14,12 +14,12 @@ public class DuckMozillaTests extends BaseTests {
 
     @BeforeMethod
     public void pageSetup() {
-        bot.NavigateTo("https://duckduckgo.com/");
+        bot.NavigateTo(data.getString("duckUrl"));
         duckPage = new DuckPage(bot);
     }
     @Test
     public void testSearchResultsLinkTitle(){
-        Assert.assertEquals(duckPage.getLinkTitle(),"TestNG Tutorial");
+        Assert.assertEquals(duckPage.getLinkTitle(data.getString("searchInputT4")),"TestNG Tutorial");
 
     }
 }

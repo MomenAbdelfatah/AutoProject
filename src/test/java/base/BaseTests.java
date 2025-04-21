@@ -1,6 +1,8 @@
 package base;
 
 import engine.Bot;
+import engine.JsonReader;
+import org.json.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -13,17 +15,19 @@ public class BaseTests {
 
     protected WebDriver driver;
     protected Bot bot;
+    protected JSONObject data;
+
 
     @BeforeClass
     @Parameters("browser")
-    public void setUp(@Optional("chrome") String browser) {
+    public void setUp(@Optional("chrome") String browser) throws Exception {
         if (browser.equalsIgnoreCase("mozilla")) {
             driver = new FirefoxDriver();
-            bot = new Bot(driver);
         } else {
             driver = new ChromeDriver();
-            bot = new Bot(driver);
         }
+        data = JsonReader.readJson("testdata/data.json");
+        bot = new Bot(driver);
         driver.manage().window().maximize();
 
     }

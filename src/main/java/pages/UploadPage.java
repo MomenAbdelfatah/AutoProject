@@ -14,8 +14,8 @@ public class UploadPage {
         this.bot = bot;
     }
 
-    public String uploadImage() {
-        bot.sendKeys(inputField,"C:\\Users\\momen\\OneDrive\\Pictures\\friends.jpg");
+    public String uploadImage(String path) {
+        bot.sendKeys(inputField,path);
         bot.click(uploadButton);
         return bot.getText(uploadResultMessage);
     }
