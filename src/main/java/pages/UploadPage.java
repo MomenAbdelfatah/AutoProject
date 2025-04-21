@@ -1,21 +1,22 @@
 package pages;
 
+import engine.Bot;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class UploadPage {
-    private WebDriver driver;
+    private Bot bot;
     private By uploadButton = By.id("file-submit");
     private By inputField = By.id("file-upload");
     private By uploadResultMessage = By.xpath("//div//h3");
 
-    public UploadPage(WebDriver driver) {
-        this.driver = driver;
+    public UploadPage(Bot bot) {
+        this.bot = bot;
     }
 
     public String uploadImage() {
-        driver.findElement(inputField).sendKeys("C:\\Users\\momen\\OneDrive\\Pictures\\friends.jpg");
-        driver.findElement(uploadButton).click();
-        return driver.findElement(uploadResultMessage).getText();
+        bot.sendKeys(inputField,"C:\\Users\\momen\\OneDrive\\Pictures\\friends.jpg");
+        bot.click(uploadButton);
+        return bot.getText(uploadResultMessage);
     }
 }

@@ -1,5 +1,6 @@
 package base;
 
+import engine.Bot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -11,14 +12,17 @@ import org.testng.annotations.Parameters;
 public class BaseTests {
 
     protected WebDriver driver;
+    protected Bot bot;
 
     @BeforeClass
     @Parameters("browser")
     public void setUp(@Optional("chrome") String browser) {
         if (browser.equalsIgnoreCase("mozilla")) {
             driver = new FirefoxDriver();
+            bot = new Bot(driver);
         } else {
             driver = new ChromeDriver();
+            bot = new Bot(driver);
         }
         driver.manage().window().maximize();
 

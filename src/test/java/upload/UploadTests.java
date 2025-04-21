@@ -12,8 +12,8 @@ public class UploadTests extends BaseTests {
 
     @BeforeMethod
     public void pageSetup(){
-        driver.get("https://the-internet.herokuapp.com/upload");
-        uploadPage = new UploadPage(driver);
+        bot.NavigateTo("https://the-internet.herokuapp.com/upload");
+        uploadPage = new UploadPage(bot);
     }
 
 

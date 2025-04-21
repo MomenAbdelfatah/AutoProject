@@ -14,8 +14,8 @@ public class DuckTests extends BaseTests {
 
     @BeforeMethod
     public void pageSetup() {
-        driver.get("https://duckduckgo.com/");
-        duckPage = new DuckPage(driver);
+        bot.NavigateTo("https://duckduckgo.com/");
+        duckPage = new DuckPage(bot);
     }
 
     @Test

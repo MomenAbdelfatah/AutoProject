@@ -11,8 +11,8 @@ public class CheckBoxTests extends BaseTests {
 
     @BeforeMethod
     public void pageSetup() {
-        driver.get("https://the-internet.herokuapp.com/checkboxes");
-        checkBoxPage = new CheckBoxPage(driver);
+        bot.NavigateTo("https://the-internet.herokuapp.com/checkboxes");
+        checkBoxPage = new CheckBoxPage(bot);
     }
 
     @Test

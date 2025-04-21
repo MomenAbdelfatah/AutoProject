@@ -12,8 +12,8 @@ public class DragAndDropTests extends BaseTests {
 
     @BeforeMethod
     public void pageSetup(){
-        driver.get("https://jqueryui.com/resources/demos/droppable/default.html");
-        dragAndDropPage = new DragAndDropPage(driver);
+        bot.NavigateTo("https://jqueryui.com/resources/demos/droppable/default.html");
+        dragAndDropPage = new DragAndDropPage(bot);
     }
 
     @Test

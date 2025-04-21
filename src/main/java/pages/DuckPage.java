@@ -13,24 +13,21 @@ import java.util.List;
 
 public class DuckPage {
 
-    private WebDriver driver;
     Bot bot;
 
-    By logo = By.xpath("//section[@class='header_headerLeft__rW6nD header_headerSection___XMRI']//a[@title='Learn about DuckDuckGo']");
-    By linksList = By.xpath("//li[@data-layout='organic']");
+    By logo = By.xpath("//div[contains(@class,'headerWrapDesktop')]//img");
+    By linksList = By.xpath("//a[@data-testid='result-extras-url-link']");
     By searchBox = By.xpath("//input[@aria-label='Search with DuckDuckGo']");
     By searchButton = By.xpath("//button[@type='submit']");
-    By linkResultText = By.xpath(".//a[@data-testid='result-extras-url-link']");
-    By resultTitle = By.xpath(".//a[@data-testid='result-title-a']//span");
+//    By linkResultText = By.xpath(".//a[@data-testid='result-extras-url-link']");
+    By resultTitle = By.xpath("//a[@data-testid='result-title-a']//span");
 
-    public DuckPage(WebDriver driver) {
-        this.driver = driver;
-        bot = new Bot(driver);
+    public DuckPage(Bot bot) {
+        this.bot=bot;
     }
 
     public String getTitle() {
-        return driver.getTitle();
-    }
+        return bot.getTitle();}
 
     public Boolean getPageLogo() {
         return bot.isDisplayed(logo);
@@ -38,20 +35,17 @@ public class DuckPage {
 
     public String getLinkText(String text, int Index) {
         bot.sendKeys(searchBox, text);
-        bot.findList(linksList);
-        List<WebElement> links = driver.findElements(linksList);
-
-        return links.get(Index).findElement(linkResultText).getDomAttribute("href");
+        List<WebElement> links = bot.findList(linksList);
+        System.out.println(links.size());
+        return links.get(Index).getDomAttribute("href");
 
     }
 
 
     public String getLinkTitle() {
         bot.sendKeys(resultTitle, "testng" + Keys.ENTER);
-        bot.findList(linksList);
-        List<WebElement> links = driver.findElements(linksList);
-
-        return links.get(3).findElement(resultTitle).getText();
+        List<WebElement> links = bot.findList(resultTitle);
+        return links.get(3).getText();
 
     }
 

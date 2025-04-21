@@ -11,8 +11,8 @@ public class TableTests extends BaseTests {
 
     @BeforeMethod
     public void pageSetup() {
-        driver.get("https://www.w3schools.com/html/html_tables.asp");
-        tablePage = new TablePage(driver);
+        bot.NavigateTo("https://www.w3schools.com/html/html_tables.asp");
+        tablePage = new TablePage(bot);
     }
 
     @Test
